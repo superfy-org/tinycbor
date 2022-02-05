@@ -456,6 +456,8 @@ CBOR_INLINE_API CborError cbor_value_dup_byte_string(const CborValue *value, uin
 
 CBOR_API CborError cbor_value_text_string_equals(const CborValue *value, const char *string, bool *result);
 
+CBOR_API CborError cbor_value_byte_string_equals(const CborValue *value, const char *string, bool *result);
+
 /* Maps and arrays */
 CBOR_INLINE_API bool cbor_value_is_array(const CborValue *value)
 { return value->type == CborArrayType; }

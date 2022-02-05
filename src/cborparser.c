@@ -1251,6 +1251,22 @@ CborError cbor_value_text_string_equals(const CborValue *value, const char *stri
     return iterate_string_chunks(&copy, CONST_CAST(char *, string), &len, result, NULL, iterate_memcmp);
 }
 
+CborError cbor_value_byte_string_equals(const CborValue *value, const char *string, bool *result)
+{
+    size_t len;
+    CborValue copy = *value;
+    CborError err = cbor_value_skip_tag(&copy);
+    if (err)
+        return err;
+    if (!cbor_value_is_byte_string(&copy)) {
+        *result = false;
+        return CborNoError;
+    }
+
+    len = strlen(string);
+    return iterate_string_chunks(&copy, CONST_CAST(char *, string), &len, result, NULL, iterate_memcmp);
+}
+
 /**
  * \fn bool cbor_value_is_array(const CborValue *value)
  *
