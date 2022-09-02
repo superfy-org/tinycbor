@@ -1,0 +1,7 @@
+config ZEPHYR_TINYCBOR_SUPERFY_MODULE
+	bool
+
+config TINYCBOR_SUPERFY
+	bool "TinyCBOR (superfy fork)"
+	help
+	  Allows encoding and decoding of CBOR streams
